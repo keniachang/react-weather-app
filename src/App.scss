@@ -1,0 +1,93 @@
+$bg-color: #222;
+$syntax-color: #eee;
+$secondary-color: #23c96d;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.app {
+    min-height: 100vh;
+    background-color: $bg-color;
+    color: $syntax-color;
+}
+
+.app-header {
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    border-bottom: 1px solid $secondary-color;
+    padding: 2rem;
+    color: inherit;
+    display: flex;
+    justify-content: space-between;
+
+    .zip-code {
+        border: 1px solid $syntax-color;
+        border-radius: 5px;
+        padding-left: 1.5rem;
+        background-color: $bg-color;
+        color: inherit;
+    }
+}
+
+.sub-header {
+    position: relative;
+    margin-top: 2rem;
+    text-align: center;
+
+    h1 {
+        font-size: 2rem;
+    }
+}
+
+.today-slider {
+    margin: 2rem 0;
+    border-top: 1px solid $secondary-color;
+    border-bottom: 1px solid $secondary-color;
+    padding: 1rem;
+}
+
+.week-weather {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 2rem 0;
+    border-top: 1px solid $secondary-color;
+
+    .copyright {
+        text-align: center;
+    }
+}
+
+@media (max-width: 500px) {
+    .app-header {
+        padding-bottom: 1.5rem;
+        flex-direction: column;
+        align-items: center;
+
+        .zip-code {
+            width: 70%;
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+        }
+    }
+
+    .sub-header {
+        margin-top: 1rem;
+    }
+
+    .today-slider {
+        margin: 1rem 0;
+    }
+}

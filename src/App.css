@@ -1,22 +1,86 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App {
-    min-height: 100vh;
-    /* background-color: #282c34; */
-    background-color: #222;
-    text-align: center;
+.app {
+  min-height: 100vh;
+  background-color: #222;
+  color: #eee;
 }
 
-.App-header {
-    /* display: flex; */
-    /* flex-direction: column; */
-    /* align-items: center;
-    justify-content: center; */
-    font-size: calc(10px + 2vmin);
-    /* color: white; */
-    color: #eee;
+.app-header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  border-bottom: 1px solid #23c96d;
+  padding: 2rem;
+  color: inherit;
+  display: flex;
+  justify-content: space-between;
+}
+
+.app-header .zip-code {
+  border: 1px solid #eee;
+  border-radius: 5px;
+  padding-left: 1.5rem;
+  background-color: #222;
+  color: inherit;
+}
+
+.sub-header {
+  position: relative;
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.sub-header h1 {
+  font-size: 2rem;
+}
+
+.today-slider {
+  margin: 2rem 0;
+  border-top: 1px solid #23c96d;
+  border-bottom: 1px solid #23c96d;
+  padding: 1rem;
+}
+
+.week-weather {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 2rem 0;
+  border-top: 1px solid #23c96d;
+}
+
+footer .copyright {
+  text-align: center;
+}
+
+@media (max-width: 500px) {
+  .app-header {
+    padding-bottom: 1.5rem;
+    flex-direction: column;
+    align-items: center;
+  }
+  .app-header .zip-code {
+    width: 70%;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+  }
+  .sub-header {
+    margin-top: 1rem;
+  }
+  .today-slider {
+    margin: 1rem 0;
+  }
 }

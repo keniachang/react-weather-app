@@ -1,13 +1,19 @@
-import 'fontsource-roboto';
+import Header from './components/Header';
+import City from './components/City';
+import TodayWeather from './components/TodayWeather';
+import WeekWeather from './components/WeekWeather';
+import Footer from './components/Footer';
 
 import './App.css';
 
 function App() {
     return (
-        <div className='App'>
-            <header className='App-header'>
-                <h1>Weather</h1>
-            </header>
+        <div className='app'>
+            <Header />
+            <City />
+            <TodayWeather />
+            <WeekWeather />
+            <Footer />
         </div>
     );
 }
