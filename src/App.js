@@ -10,9 +10,11 @@ function App() {
     return (
         <div className='app'>
             <Header />
-            <City />
-            <TodayWeather />
-            <WeekWeather />
+            <main>
+                <City />
+                <TodayWeather />
+                <WeekWeather />
+            </main>
             <Footer />
         </div>
     );

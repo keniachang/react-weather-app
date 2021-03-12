@@ -9,21 +9,37 @@ $secondary-color: #23c96d;
 }
 
 .app {
+    // for footer position property set to absolute (old)
+    // position: relative;
+
+    // to set footer stays at the end (new)
+    display: flex;
+    flex-direction: column;
+
     min-height: 100vh;
     background-color: $bg-color;
     color: $syntax-color;
 }
 
+header {
+    flex-grow: 0;
+}
+
+main {
+    flex-grow: 1;
+}
+
 .app-header {
-    position: sticky;
-    top: 0;
-    left: 0;
+    // to set it at the top
+    // position: relative;
+    // top: 0;
+    // left: 0;
+
     width: 100vw;
-    border-bottom: 1px solid $secondary-color;
-    padding: 2rem;
-    color: inherit;
+    padding: 2rem 2rem 1rem;
     display: flex;
     justify-content: space-between;
+    color: inherit;
 
     .zip-code {
         border: 1px solid $syntax-color;
@@ -35,8 +51,15 @@ $secondary-color: #23c96d;
 }
 
 .sub-header {
-    position: relative;
-    margin-top: 2rem;
+    // to have this show even scroll down
+    position: sticky;
+    top: 0;
+    background: rgba(35, 35, 35, 1);
+
+    margin: 2rem 0;
+    border-top: 1px solid $secondary-color;
+    border-bottom: 1px solid $secondary-color;
+    padding: 1rem 0;
     text-align: center;
 
     h1 {
@@ -46,20 +69,57 @@ $secondary-color: #23c96d;
 
 .today-slider {
     margin: 2rem 0;
-    border-top: 1px solid $secondary-color;
     border-bottom: 1px solid $secondary-color;
-    padding: 1rem;
+    padding: 0 2rem 2rem;
+    display: flex;
+    justify-content: space-between;
+
+    // slider
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+
+    /*
+    // hide scrollbar but can still scroll
+    -ms-overflow-style: none; // IE and Edge
+    scrollbar-width: none; // Firefox
+    */
+}
+
+/*
+// Chrome, Safari and Opera
+.today-slider::-webkit-scrollbar {
+    display: none;
+}
+*/
+
+.hourly {
+    text-align: center;
+
+    // slider
+    width: 25%;
+    flex-shrink: 0;
+    scroll-snap-align: start;
 }
 
 .week-weather {
+    padding-bottom: 4rem; // spaces before footer
+}
+
+.daily {
+    margin: 2rem;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: space-between;
 }
 
 footer {
-    position: absolute;
-    bottom: 0;
+    // stay at end (old)
+    // position: absolute;
+    // bottom: 0;
+
+    // stay at end (new) - .app (flex & column) + header (flex-grow: 0) + main (flex-grow: 1)
+    flex-grow: 0;
+
     width: 100%;
     padding: 2rem 0;
     border-top: 1px solid $secondary-color;
@@ -89,5 +149,33 @@ footer {
 
     .today-slider {
         margin: 1rem 0;
+        padding-left: 1.5rem;
+
+        // temperary
+        // flex-wrap: wrap;
+        // overflow: hidden;
+    }
+
+    .hourly {
+        margin-right: 2rem;
+
+        // slider
+        width: 40%;
+    }
+
+    .week-weather {
+        padding-bottom: 3rem;
+    }
+
+    .daily {
+        font-size: 1rem;
+    }
+
+    footer {
+        padding: 1rem 0;
+
+        .copyright {
+            font-size: 0.8rem;
+        }
     }
 }

@@ -5,21 +5,27 @@
 }
 
 .app {
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
   background-color: #222;
   color: #eee;
 }
 
+header {
+  flex-grow: 0;
+}
+
+main {
+  flex-grow: 1;
+}
+
 .app-header {
-  position: sticky;
-  top: 0;
-  left: 0;
   width: 100vw;
-  border-bottom: 1px solid #23c96d;
-  padding: 2rem;
-  color: inherit;
+  padding: 2rem 2rem 1rem;
   display: flex;
   justify-content: space-between;
+  color: inherit;
 }
 
 .app-header .zip-code {
@@ -31,8 +37,13 @@
 }
 
 .sub-header {
-  position: relative;
-  margin-top: 2rem;
+  position: sticky;
+  top: 0;
+  background: #232323;
+  margin: 2rem 0;
+  border-top: 1px solid #23c96d;
+  border-bottom: 1px solid #23c96d;
+  padding: 1rem 0;
   text-align: center;
 }
 
@@ -42,20 +53,45 @@
 
 .today-slider {
   margin: 2rem 0;
-  border-top: 1px solid #23c96d;
   border-bottom: 1px solid #23c96d;
-  padding: 1rem;
+  padding: 0 2rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  /*
+    // hide scrollbar but can still scroll
+    -ms-overflow-style: none; // IE and Edge
+    scrollbar-width: none; // Firefox
+    */
+}
+
+/*
+// Chrome, Safari and Opera
+.today-slider::-webkit-scrollbar {
+    display: none;
+}
+*/
+.hourly {
+  text-align: center;
+  width: 25%;
+  flex-shrink: 0;
+  scroll-snap-align: start;
 }
 
 .week-weather {
+  padding-bottom: 4rem;
+}
+
+.daily {
+  margin: 2rem;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: space-between;
 }
 
 footer {
-  position: absolute;
-  bottom: 0;
+  flex-grow: 0;
   width: 100%;
   padding: 2rem 0;
   border-top: 1px solid #23c96d;
@@ -82,5 +118,22 @@ footer .copyright {
   }
   .today-slider {
     margin: 1rem 0;
+    padding-left: 1.5rem;
+  }
+  .hourly {
+    margin-right: 2rem;
+    width: 40%;
+  }
+  .week-weather {
+    padding-bottom: 3rem;
+  }
+  .daily {
+    font-size: 1rem;
+  }
+  footer {
+    padding: 1rem 0;
+  }
+  footer .copyright {
+    font-size: 0.8rem;
   }
 }

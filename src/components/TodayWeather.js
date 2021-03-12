@@ -1,8 +1,20 @@
+import Hourly from './Hourly';
+
 const TodayWeather = () => {
     return (
         <section className='today-slider'>
-            {/* HourlyWeather */}
-            <p>Array of Hourly</p>
+            <Hourly />
+            <Hourly />
+            <Hourly />
+            <Hourly />
+            <Hourly />
+            <Hourly />
+            <Hourly />
+            <Hourly />
+            <Hourly />
+            <Hourly />
+            <Hourly />
+            <Hourly />
         </section>
     );
 };
