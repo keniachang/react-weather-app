@@ -1,3 +1,5 @@
+import { GlobalProvider } from './context/GlobalState';
+
 import Header from './components/Header';
 import City from './components/City';
 import TodayWeather from './components/TodayWeather';
@@ -8,15 +10,17 @@ import './App.css';
 
 function App() {
     return (
-        <div className='app'>
-            <Header />
-            <main>
-                <City />
-                <TodayWeather />
-                <WeekWeather />
-            </main>
-            <Footer />
-        </div>
+        <GlobalProvider>
+            <div className='app'>
+                <Header />
+                <main>
+                    <City />
+                    <TodayWeather />
+                    <WeekWeather />
+                </main>
+                <Footer />
+            </div>
+        </GlobalProvider>
     );
 }
 

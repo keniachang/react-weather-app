@@ -1,15 +1,49 @@
+/*
+// use this to outline element
+* {
+    background: #000 !important;
+    color: #0f0 !important;
+    outline: solid #f00 1px !important;
+    box-sizing: border-box;
+}
+*/
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-weight: bold;
+}
+
+input:focus {
+  background-color: #222 !important;
+}
+
+/*
+button {
+    transition: padding 0.5s ease-in-out;
+}
+
+button:active,
+button:focus {
+    outline: none;
+    padding: 1rem !important;
+}
+*/
+button:active,
+button:focus {
+  outline: none;
+  background-color: #222 !important;
 }
 
 .app {
   display: flex;
   flex-direction: column;
+  max-width: 100vw;
   min-height: 100vh;
   background-color: #222;
-  color: #eee;
+  color: #ddd;
+  background: url("/src/nightsky.jpg") no-repeat 10%;
+  background-size: cover;
 }
 
 header {
@@ -20,30 +54,53 @@ main {
   flex-grow: 1;
 }
 
+.temperature {
+  font-size: 1.5rem;
+}
+
 .app-header {
-  width: 100vw;
+  width: 100%;
   padding: 2rem 2rem 1rem;
   display: flex;
   justify-content: space-between;
   color: inherit;
 }
 
-.app-header .zip-code {
-  border: 1px solid #eee;
+.app-header form .zip-code {
+  border: 1px solid #ddd;
   border-radius: 5px;
-  padding-left: 1.5rem;
-  background-color: #222;
+  padding: 0.8rem 0 0.8rem 1.5rem;
+  background-color: transparent;
   color: inherit;
+}
+
+.app-header form button {
+  display: inline block;
+  margin: 0 1rem;
+  padding: 0.8rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: transparent;
+  color: #ddd;
+}
+
+.app-header .alert {
+  padding: 0.8rem 1rem;
+  background-color: rgba(220, 20, 60, 0.836);
 }
 
 .sub-header {
   position: sticky;
   top: 0;
   background: #232323;
+  background: url("/src/nightsky.jpg") no-repeat;
+  background-size: cover;
   margin: 2rem 0;
-  border-top: 1px solid #23c96d;
-  border-bottom: 1px solid #23c96d;
+  border-top: 1px solid #fff;
+  border-bottom: 1px solid #fff;
   padding: 1rem 0;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
   text-align: center;
 }
 
@@ -51,50 +108,97 @@ main {
   font-size: 2rem;
 }
 
+.sub-header .city-weather button {
+  margin-top: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 5px 10px;
+  background-color: transparent;
+  color: inherit;
+}
+
+.sub-header .weather-icon {
+  /*
+        img {
+            position: relative;
+        }
+        */
+  padding-top: 1rem;
+}
+
+/*
+@keyframes moving {
+    0% {
+        left: 0px;
+    }
+    55% {
+        left: -20px;
+    }
+    100% {
+        left: 0px;
+    }
+}
+*/
 .today-slider {
   margin: 2rem 0;
-  border-bottom: 1px solid #23c96d;
+  border-bottom: 1px solid #fff;
   padding: 0 2rem 2rem;
   display: flex;
   justify-content: space-between;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
-  /*
-    // hide scrollbar but can still scroll
-    -ms-overflow-style: none; // IE and Edge
-    scrollbar-width: none; // Firefox
-    */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  cursor: grab;
 }
 
-/*
-// Chrome, Safari and Opera
-.today-slider::-webkit-scrollbar {
-    display: none;
-}
-*/
-.hourly {
+.today-slider .hourly {
   text-align: center;
   width: 25%;
   flex-shrink: 0;
   scroll-snap-align: start;
 }
 
-.week-weather {
-  padding-bottom: 4rem;
+.today-slider::-webkit-scrollbar {
+  display: none;
 }
 
-.daily {
-  margin: 2rem;
-  display: flex;
-  justify-content: space-between;
+.week-weather {
+  margin-top: 3rem;
+  padding-bottom: 16rem;
+}
+
+.week-weather table {
+  width: 95%;
+  margin: 0 auto;
+  border-collapse: collapse;
+}
+
+.week-weather table th {
+  border-bottom: 1px solid #ddd;
+  padding: 0 1.5rem 2rem;
+  font-size: 1.5rem;
+}
+
+.week-weather table td {
+  padding-top: 1.5rem;
+  text-align: center;
+}
+
+.week-weather table .icon {
+  margin-top: 0.5rem;
+}
+
+.week-weather table .date {
+  font-size: 1.2rem;
 }
 
 footer {
   flex-grow: 0;
   width: 100%;
   padding: 2rem 0;
-  border-top: 1px solid #23c96d;
+  border-top: 1px solid #fff;
 }
 
 footer .copyright {
@@ -102,38 +206,102 @@ footer .copyright {
 }
 
 @media (max-width: 500px) {
+  .temperature {
+    font-size: 1.2rem;
+  }
   .app-header {
     padding-bottom: 1.5rem;
     flex-direction: column;
-    align-items: center;
+    text-align: center;
   }
-  .app-header .zip-code {
+  .app-header h1 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+  }
+  .app-header form .zip-code {
     width: 70%;
-    margin-top: 1rem;
+    margin: 1rem 0;
     padding: 0.5rem 1rem;
     font-size: 1rem;
   }
+  .app-header form button {
+    display: block;
+    margin: auto;
+    padding: 0.5rem 1rem;
+  }
+  .app-header .alert {
+    margin: 1rem 0;
+    padding: 0.5rem 1rem;
+  }
   .sub-header {
     margin-top: 1rem;
+    background: url("/src/nightsky.jpg") no-repeat 10% 35%;
+    background-size: cover;
+  }
+  .sub-header h1 {
+    font-size: 1.2rem;
+  }
+  .sub-header h2 {
+    font-size: 1rem;
+  }
+  .sub-header .weather-icon canvas {
+    width: 80px !important;
+    height: 80px !important;
   }
   .today-slider {
     margin: 1rem 0;
     padding-left: 1.5rem;
+    font-size: 0.8rem;
   }
-  .hourly {
+  .today-slider .hourly {
     margin-right: 2rem;
-    width: 40%;
+    font-size: 0.8rem;
+    width: 30%;
+    /*
+            img {
+                width: 80%;
+            }
+            */
+  }
+  .today-slider .hourly .icon {
+    width: 50px !important;
+    height: 50px !important;
   }
   .week-weather {
-    padding-bottom: 3rem;
+    margin-top: 2rem;
+    padding-bottom: 5rem;
   }
-  .daily {
+  .week-weather table {
+    width: 90%;
+    font-size: 0.8rem;
+    /*
+            img {
+                width: 70%;
+            }
+            */
+  }
+  .week-weather table th {
+    padding-bottom: 1rem;
+    font-size: 0.9rem;
+  }
+  .week-weather table td {
+    font-size: 0.8rem;
+    font-weight: normal;
+  }
+  .week-weather table .date {
+    font-size: 0.9rem;
+  }
+  .week-weather table .icon {
+    width: 35px !important;
+    height: 35px !important;
+  }
+  .week-weather table .temperature {
     font-size: 1rem;
   }
   footer {
     padding: 1rem 0;
   }
   footer .copyright {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
   }
 }
