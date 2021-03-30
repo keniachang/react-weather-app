@@ -29,4 +29,4 @@ https://www.npmjs.com/package/react-skycons
 
 ### Deployment
 
-Netlify
+Netlify - https://youthful-sammet-b7521d.netlify.app/
